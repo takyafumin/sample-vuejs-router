@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>vue router sample</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <nav>
+            <a href="/">Home</a>
+            <router-link to="/news1">News1</router-link>
+            <router-link to="/news2">News2</router-link>
+            <a href="/web/">WebServer</a>
+        </nav>
+        <router-view/>
+    </div>
+
+<script>
+    const News1 = { template: '<div>News1</div>'}
+    const News2 = { template: '<div>News2</div>'}
+
+    const router = new VueRouter({
+        mode: 'history',
+        routes : [
+            {path:'/news1', component: News1},
+            {path:'/news2', component: News2}
+        ]
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data:{
+            title: 'Vue Router Sample',
+        },
+        router,
+    });
+
+</script>
+</body>
+</html>
+
